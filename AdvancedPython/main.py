@@ -134,3 +134,42 @@ class MathOperations:
 print(MathOperations.add(3,5))
 math = MathOperations()
 print(math.add(10,20))
+
+
+print("="*60)
+print("SECTION 4: CLASS METHODS")
+print("="*60)
+
+#@classmethod
+
+# alternative constructor
+
+class Pizza:
+    total_pizzas = 0
+
+    def __init__(self,ingredients):
+        self.ingredients = ingredients
+        Pizza.total_pizzas += 1
+
+    @classmethod    
+    def margherita(cls):
+        return cls(["peynir", "sucuk", "zeytin"])
+    
+    @classmethod    
+    def pepperoni(cls):
+        return cls(["peynir", "sucuk", "domates"])
+    
+    @classmethod
+    def get_total_pizzas(cls):
+        return cls.total_pizzas
+
+pizzas = Pizza.margherita()
+print(Pizza.get_total_pizzas())
+print(pizzas.ingredients)
+
+pizzas2 = Pizza.pepperoni()
+print(Pizza.get_total_pizzas())
+print(pizzas2.ingredients)
+
+
+
