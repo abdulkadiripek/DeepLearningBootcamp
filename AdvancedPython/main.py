@@ -117,3 +117,20 @@ print(Ozge.name)
 
 Ozge.age = 48
 print(Ozge.age)
+
+
+
+print("="*60)
+print("SECTION 3: STATIC METHODS")
+print("="*60)
+
+
+class MathOperations:
+    
+    @staticmethod
+    def add(x,y):
+        return x+y
+    
+print(MathOperations.add(3,5))
+math = MathOperations()
+print(math.add(10,20))
