@@ -69,8 +69,51 @@ class Animal:
     def name(self,value):
         self.__name = value
 
+    @name.deleter        # DELETER
+    def name(self):
+        self.__name = None    
+
 cat = Animal("Tom",4)
 print(cat.name)
 
 cat.name = "Tom Kedi"
 print(cat.name)
+
+del cat.name
+print(cat.name)
+
+class Person:
+    def __init__(self,name,age):
+        self.__name = name
+        self.__age  = age
+
+    @property
+    def name(self):
+        return "Your name is:" + self.__name
+    
+    @name.setter
+    def name(self,value):
+        if not isinstance(value,str):
+            raise ValueError("Name must be a string.")
+        if len(value)<=2:
+            raise ValueError("Name must be longer.")
+        self.__name = value
+
+    @property
+    def age(self):
+        return self.__age
+    
+    @age.setter
+    def age(self,value):
+        if not isinstance(value,int):
+            raise ValueError("Age must be intager.")
+        if value < 0 or value > 150 :
+            raise ValueError("Age is not accepted.")
+        self.__age=value
+    
+Ozge = Person("Özge",22)
+Ozge.name = "Özge Yalçinkaya"
+print(Ozge.name)
+
+Ozge.age = 48
+print(Ozge.age)
