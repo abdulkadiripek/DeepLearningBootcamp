@@ -284,10 +284,11 @@ class MyGame(BaseGame):
     def start(self) -> None:
         print("MyGame started")
 
+"""
     # Final koyduğumuz için uyarı veriyor (Final koydun ama bak kullanıyorsun.)
     def calculate_score(self, point: int) -> int:
         return point * 2
-    
+"""
 game = MyGame()
 game.start()
 print(game.calculate_score(100))
@@ -300,3 +301,33 @@ secret_algorithm.process()
 print("=" * 60)
 print("SECTION 8: OVERRIDE")
 print("=" * 60)
+
+# override methodunu import ediyoruz.
+from typing import override
+
+class Shape:
+
+    def area(self) -> float:
+        return 0.0
+    
+    def perimeter(self) -> float:
+        return 0.0
+    
+
+class Rectangle(Shape):
+
+    def __init__(self,width:float,height:float):
+        self.width = width
+        self.height = height
+
+    @override
+    def area(self) -> float:
+        return self.height* self.width
+
+    @override
+    def perimeter(self)->float:
+        return (self.height + self.width) * 2
+    
+rectangle = Rectangle(10,20)
+print(rectangle.area())
+print(rectangle.perimeter())
