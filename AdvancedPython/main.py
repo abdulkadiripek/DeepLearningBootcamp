@@ -27,7 +27,7 @@ print("="*60)
 #data validation için kullanılabilir. (encapsulation)
 
 # BUNLAR ESKİ ALIŞKANLIKLAR DAHA MODERNİ VAR.
-class Person:
+class Person2:
     def __init__(self,name,age):
         self.__name = name
         self.__age  = age
@@ -46,14 +46,13 @@ class Person:
         self.__age = new_age
         return f"Your new age is {self.__age}"
 
-Kadir = Person("Abdulkadir", 22)
+Kadir = Person2("Abdulkadir", 22)
 print(Kadir.get_name())
 print(Kadir.set_name("Kadir"))
 print(Kadir.get_name())
 print(Kadir.get_age())
 print(Kadir.set_age(23))
 
-print
 
 class Animal:
     def __init__(self,name,age):
@@ -183,15 +182,15 @@ class Hayvanlar(ABC):
         self.name = name
 
     @abstractmethod
-    def sound(self):
+    def sound(self) -> str:
         pass
 
     @abstractmethod
-    def move(self):
+    def move(self) -> str:
         pass
 
     @abstractmethod
-    def sleep(self):
+    def sleep(self) -> str:
         pass
 
 class Dog(Hayvanlar):
@@ -207,4 +206,53 @@ class Dog(Hayvanlar):
 barley = Dog("Barley")
 print(barley.move())
 
+# overloading, overriding, final
 
+print("=" * 60)
+print("SECTION 6: OVERLOADING")
+print("=" * 60)
+
+from typing import overload, Union
+
+def example(x:int):
+    return x * 2
+
+# Böyle de çalışır ama altında bir uyarı verir.
+# print(example("Abdulkadir"))
+
+class Calculator:
+
+    @overload
+    def add(self,a:int,b:int) -> int:
+        ...
+
+    @overload
+    def add(self,a:int,b:int,c:int) -> int:
+        ...
+
+    def add(self, a:int, b:int, c:int | None=None) -> int:
+        if c is None:
+            return a+b
+        else:
+            return a+b+c
+        
+    @overload
+    def process(self,value:str) -> str:
+        ...
+    
+    @overload
+    def process(self,value:int) -> int:
+        ...
+
+    def process(self,value:Union[int,str]) -> Union[int,str]:
+        if isinstance(value,int):
+            return value * 2
+        elif isinstance(value,str):
+            return value.upper()
+        else:
+            raise ValueError("Value must be str or int.")
+        
+
+calculator = Calculator()
+print(calculator.add(10,20,30))
+print(calculator.process(10))
