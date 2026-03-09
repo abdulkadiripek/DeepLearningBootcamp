@@ -331,3 +331,24 @@ class Rectangle(Shape):
 rectangle = Rectangle(10,20)
 print(rectangle.area())
 print(rectangle.perimeter())
+
+print("=" * 60)
+print("BONUS SECTION: COMBINING DECODATORS")
+print("=" * 60)
+
+def multiply_decorator(func):
+    def wrapper(x:int):
+        return func(x) * 2
+    return wrapper
+
+def other_decorator(func):
+    def wrapper(x:int):
+        return func(x) * 4
+    return wrapper
+
+@multiply_decorator
+@other_decorator
+def calculate(x:int) -> int:
+    return x * 2
+
+print(calculate(10))
