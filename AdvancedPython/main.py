@@ -172,4 +172,39 @@ print(Pizza.get_total_pizzas())
 print(pizzas2.ingredients)
 
 
+print("=" * 60)
+print("SECTION 5: ABSTRACT METHOD")
+print("=" * 60)
+
+from abc import ABC, abstractmethod
+
+class Hayvanlar(ABC):
+    def __init__(self,name):
+        self.name = name
+
+    @abstractmethod
+    def sound(self):
+        pass
+
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def sleep(self):
+        pass
+
+class Dog(Hayvanlar):
+    def sound(self):
+        return "Hav hav"
+    
+    def move(self):
+        return "Koş"
+    
+    def sleep(self):
+        return "Uyudu"
+
+barley = Dog("Barley")
+print(barley.move())
+
 
