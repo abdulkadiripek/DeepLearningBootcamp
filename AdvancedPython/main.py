@@ -256,3 +256,47 @@ class Calculator:
 calculator = Calculator()
 print(calculator.add(10,20,30))
 print(calculator.process(10))
+
+
+print("=" * 60)
+print("SECTION 7: FINAL")
+print("=" * 60)
+
+from typing import final
+
+class BaseGame:
+
+    def start(self) -> None:
+        print("Game Started")
+
+    @final
+    def calculate_score(self,point:int) -> int:
+        bonus=100
+        return point + bonus
+# inherite edilmemesi için @final class'lara konulur.
+@final
+class SecretAlgorithm:
+    def process(self):
+        print("Secret algorithm executed")    
+
+class MyGame(BaseGame):
+
+    def start(self) -> None:
+        print("MyGame started")
+
+    # Final koyduğumuz için uyarı veriyor (Final koydun ama bak kullanıyorsun.)
+    def calculate_score(self, point: int) -> int:
+        return point * 2
+    
+game = MyGame()
+game.start()
+print(game.calculate_score(100))
+
+
+    
+secret_algorithm = SecretAlgorithm()
+secret_algorithm.process()
+
+print("=" * 60)
+print("SECTION 8: OVERRIDE")
+print("=" * 60)
