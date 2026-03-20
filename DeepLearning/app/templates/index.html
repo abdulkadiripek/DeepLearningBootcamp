@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iris Siniflandirma</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Iris Siniflandirma</h1>
+      <p class="subtitle">PyTorch + FastAPI ile cicek turu tahmini</p>
+
+      <form id="predict-form" class="form-grid">
+        <label>
+          Sepal Length (cm)
+          <input type="number" step="0.1" min="0" id="sepal_length" required />
+        </label>
+        <label>
+          Sepal Width (cm)
+          <input type="number" step="0.1" min="0" id="sepal_width" required />
+        </label>
+        <label>
+          Petal Length (cm)
+          <input type="number" step="0.1" min="0" id="petal_length" required />
+        </label>
+        <label>
+          Petal Width (cm)
+          <input type="number" step="0.1" min="0" id="petal_width" required />
+        </label>
+
+        <button type="submit">Tahmin Et</button>
+      </form>
+
+      <section id="result" class="result hidden">
+        <h2>Sonuc</h2>
+        <p><strong>Tahmin:</strong> <span id="predicted-class">-</span></p>
+        <div id="probs"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

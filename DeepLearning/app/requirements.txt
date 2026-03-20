@@ -1,0 +1,10 @@
+# Arch Linux icin bagimliliklar pacman tarafindan yonetiliyor.
+# Bu projede pip requirements zorunlu degil.
+#
+# Gerekli sistem paketleri (pacman):
+# - python-fastapi
+# - uvicorn
+# - python-jinja
+# - python-pytorch-cuda (onerilen, sende kurulu)
+#   veya
+# - python-pytorch (CPU)
