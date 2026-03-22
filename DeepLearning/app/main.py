@@ -1,4 +1,5 @@
 from pathlib import Path
+from pdb import run
 
 import torch
 import torch.nn as nn
@@ -7,6 +8,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
+import uvicorn
 
 
 class MultiClassClasification(nn.Module):
@@ -99,3 +101,7 @@ async def predict(features: IrisFeatures):
         return _predict(features)
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app,host="0.0.0.0",port=8000)
