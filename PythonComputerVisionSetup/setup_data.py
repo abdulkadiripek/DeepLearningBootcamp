@@ -3,13 +3,13 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
 # Use all available CPU cores for data loading by default.
-NUM_WORKERS = os.cpu_count()
+NUM_WORKERS = os.cpu_count() or 0
 
 def create_dataloader(train_dir: str,
                       test_dir: str,
                       transforms: transforms.Compose,
                       batch_size: int,
-                      num_worksers: int):
+                      num_worksers: int = NUM_WORKERS):
     # Load training images from folder structure.
     train_data  = datasets.ImageFolder(root=train_dir,
                                        transform=transforms)
