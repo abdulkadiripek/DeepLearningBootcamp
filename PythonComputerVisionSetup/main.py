@@ -5,7 +5,7 @@ import setup_data, training_testing_motor, model_creation, utils
 
 def main():
 
-    NUM_EPOCHS = 10
+    NUM_EPOCHS = 20
     BATCH_SIZE = 32
     HIDDEN_UNIT = 32
     LEARNING_RATE = 0.0003
@@ -15,7 +15,8 @@ def main():
 
     data_transform = transforms.Compose([
     transforms.Resize(size=(64,64)), 
-    transforms.RandomRotation(degrees=20),   
+    transforms.RandomRotation(degrees=20),
+    transforms.TrivialAugmentWide(),   
     transforms.ToTensor(),
     transforms.Normalize([0.5483, 0.4638, 0.3865],[0.2542, 0.2576, 0.2630]),
 ])
