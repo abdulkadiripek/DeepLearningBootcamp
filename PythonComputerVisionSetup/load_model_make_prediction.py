@@ -41,7 +41,8 @@ image_path = data_path / "baklava.jpg"
 single_image = torchvision.io.read_image(path=str(image_path)).type(torch.float32)
 single_image /= 255
 single_image_transforms = transforms.Compose([
-    transforms.Resize(size=(64,64))
+    transforms.Resize(size=(64,64)),
+    transforms.Normalize([0.5483, 0.4638, 0.3865],[0.2542, 0.2576, 0.2630])
 ])
 single_image = single_image_transforms(single_image)
 single_image = single_image.unsqueeze(dim=0)

@@ -26,7 +26,7 @@ class DesertClassifier(nn.Module):
         )
         self.dense_layer = nn.Sequential(
             nn.Flatten(),
-            nn.Dropout2d(p=0.5),
+            nn.Dropout(p=0.5),
             nn.Linear(in_features=hidden_unit *16*16, out_features=output_shape)
         )
     def forward(self,x):
