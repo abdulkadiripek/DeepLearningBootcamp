@@ -45,7 +45,6 @@ def main():
         epochs=NUM_EPOCHS
         )
     
-    print(f"Final results {results}")
 
     utils.save_model(model=model,target_dir="models",model_name="desert_classifier.pth")
 
