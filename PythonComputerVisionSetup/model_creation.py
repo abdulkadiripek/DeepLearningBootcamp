@@ -9,19 +9,19 @@ class DesertClassifier(nn.Module):
         self.conv_block_1 = nn.Sequential(
             nn.Conv2d(in_channels=input_shape, out_channels=hidden_unit, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(num_features=hidden_unit),
-            nn.ReLU(),
+            nn.GELU(),
             nn.Conv2d(in_channels=hidden_unit, out_channels=hidden_unit, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(num_features=hidden_unit),
-            nn.ReLU(),
+            nn.GELU(),
             nn.MaxPool2d(kernel_size=2,stride=2)
         )
         self.conv_block_2 = nn.Sequential(
             nn.Conv2d(in_channels=hidden_unit, out_channels=hidden_unit, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(num_features=hidden_unit),
-            nn.ReLU(),
+            nn.GELU(),
             nn.Conv2d(in_channels=hidden_unit, out_channels=hidden_unit, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(num_features=hidden_unit),
-            nn.ReLU(),
+            nn.GELU(),
             nn.MaxPool2d(kernel_size=2,stride=2)
         )
         self.dense_layer = nn.Sequential(
